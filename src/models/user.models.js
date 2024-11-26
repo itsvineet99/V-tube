@@ -72,7 +72,7 @@ userSchema.methods.generataeAccessToken = function(){
     )
 }
 
-userSchema.methods.generataeAccessToken = function(){
+userSchema.methods.generataeRefreshToken = function(){
     return jwt.sign(
         {
             _id: this._id,
@@ -83,8 +83,5 @@ userSchema.methods.generataeAccessToken = function(){
         }
     )
 }
-
-userSchema.methods.generataeRefreshToken = function(){}
-
 
 export const User = mongoose.model("User", userSchema)
