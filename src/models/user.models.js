@@ -42,7 +42,7 @@ const userSchema = new Schema({
         type: String,
         required: [true, "password is required"]
     },
-    refreshToked:{
+    refreshToken:{
         type: String
     }
 }, { timestamps: true})
@@ -57,7 +57,7 @@ userSchema.methods.isPasswordCorrect = async function(password){
     return await bcrypt.compare(password, this.password)
 }
 
-userSchema.methods.generataeAccessToken = function(){
+userSchema.methods.generateAccessToken = function(){
     return jwt.sign(
         {
             _id: this._id,
@@ -72,7 +72,7 @@ userSchema.methods.generataeAccessToken = function(){
     )
 }
 
-userSchema.methods.generataeRefreshToken = function(){
+userSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
             _id: this._id,
